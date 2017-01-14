@@ -16,9 +16,7 @@ namespace _02_Odie
         public SodaMachineRack()
         {
             Debug.WriteLine("New SodaMachineRacks object utilized");
-            _regular = 3;
-            _orange = 3;
-            _lemon = 3;
+            FillTheCanRack();
         }
 
         public void AddCanOf(string FlavorOfCanToBeAdded)
@@ -111,7 +109,7 @@ namespace _02_Odie
 
         public Boolean IsEmpty(string FlavorOfBinToCheck)
         {
-            Debug.WriteLine("IsEmpty checkd");
+            Debug.WriteLine("IsEmpty checked");
             if (FlavorOfBinToCheck.ToUpper() == "REGULAR" && _regular == 0)
             {
                 return true;

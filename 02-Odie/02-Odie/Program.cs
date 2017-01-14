@@ -31,8 +31,8 @@ namespace _02_Odie
                 sodaRack.RemoveCanOf(currentSoda);
                 Console.WriteLine($"Thanks. Here is your {currentSoda} soda");
             }
-
-            // Seeing when removed more cans than are available
+            Console.WriteLine();
+            // Seeing when more cans than are available are attempted to be removed
             Console.WriteLine("Orange soda rack empty? " + sodaRack.IsEmpty("orange"));
             sodaRack.RemoveCanOf(currentSoda);
             Console.WriteLine("Orange soda rack empty? " + sodaRack.IsEmpty("orange"));
