@@ -1,4 +1,4 @@
-﻿//Exercise 02
+﻿//Exercise 3
 //Odie de Moura
 
 using System;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
-namespace _02_Odie
+namespace _03_Odie
 {
     class SodaMachineRack
     {
@@ -18,13 +18,11 @@ namespace _02_Odie
 
         public SodaMachineRack()
         {
-            Debug.WriteLine("New SodaMachineRacks object utilized");
             FillTheCanRack();
         }
 
         public void AddCanOf(string FlavorOfCanToBeAdded)
         {
-            Debug.WriteLine("AddCanOf Accessed");
             if (FlavorOfCanToBeAdded.ToUpper() == "REGULAR" && IsFull("regular") == false)
             {
                 _regular++;
@@ -43,9 +41,28 @@ namespace _02_Odie
             }
         }
 
+        public void AddCanOf(Flavor FlavorOfCanToBeAdded)
+        {
+            if (Enum.GetName(typeof(Flavor), FlavorOfCanToBeAdded) == "REGULAR" && IsFull("regular") == false)
+            {
+                _regular++;
+            }
+            else if (Enum.GetName(typeof(Flavor), FlavorOfCanToBeAdded) == "ORANGE" && IsFull("orange") == false)
+            {
+                _orange++;
+            }
+            else if (Enum.GetName(typeof(Flavor), FlavorOfCanToBeAdded) == "LEMON" && IsFull("lemon") == false)
+            {
+                _lemon++;
+            }
+            else
+            {
+                Console.WriteLine($"Could not add {FlavorOfCanToBeAdded} to SodaMachineRacks");
+            }
+        }
+
         public void RemoveCanOf(string FlavorOfCanToBeRemoved)
         {
-            Debug.WriteLine("RemoveCanOf Accessed");
             if (FlavorOfCanToBeRemoved.ToUpper() == "REGULAR" && IsEmpty("regular") == false)
             {
                 _regular--;
@@ -64,9 +81,28 @@ namespace _02_Odie
             }
         }
 
+        public void RemoveCanOf(Flavor FlavorOfCanToBeRemoved)
+        {
+            if (Enum.GetName(typeof(Flavor), FlavorOfCanToBeRemoved) == "REGULAR" && IsEmpty("regular") == false)
+            {
+                _regular--;
+            }
+            else if (Enum.GetName(typeof(Flavor), FlavorOfCanToBeRemoved) == "ORANGE" && IsEmpty("orange") == false)
+            {
+                _orange--;
+            }
+            else if (Enum.GetName(typeof(Flavor), FlavorOfCanToBeRemoved) == "LEMON" && IsEmpty("lemon") == false)
+            {
+                _lemon--;
+            }
+            else
+            {
+                Console.WriteLine($"Could not remove {FlavorOfCanToBeRemoved} from SodaMachineRacks");
+            }
+        }
+
         public void FillTheCanRack()
         {
-            Debug.WriteLine("FillTheCanRack Accessed");
             _regular = 3;
             _orange = 3;
             _lemon = 3;
@@ -74,7 +110,6 @@ namespace _02_Odie
 
         public void EmptyCanRackOf(string FlavorOfBinToBeEmptied)
         {
-            Debug.WriteLine("EmptyCanRackOf Accessed");
             if (FlavorOfBinToBeEmptied.ToUpper() == "REGULAR")
             {
                 _regular = 0;
@@ -89,9 +124,24 @@ namespace _02_Odie
             }
         }
 
+        public void EmptyCanRackOf(Flavor FlavorOfBinToBeEmptied)
+        {
+            if (Enum.GetName(typeof(Flavor), FlavorOfBinToBeEmptied) == "REGULAR")
+            {
+                _regular = 0;
+            }
+            if (Enum.GetName(typeof(Flavor), FlavorOfBinToBeEmptied) == "ORANGE")
+            {
+                _orange = 0;
+            }
+            if (Enum.GetName(typeof(Flavor), FlavorOfBinToBeEmptied) == "LEMON")
+            {
+                _lemon = 0;
+            }
+        }
+
         public Boolean IsFull(string FlavorOfBinToCheck)
         {
-            Debug.WriteLine("IsFull checked");
             if (FlavorOfBinToCheck.ToUpper() == "REGULAR" && _regular == 3)
             {
                 return true;
@@ -110,9 +160,28 @@ namespace _02_Odie
             }
         }
 
+        public Boolean IsFull(Flavor FlavorOfBinToCheck)
+        {
+            if (Enum.GetName(typeof(Flavor), FlavorOfBinToCheck) == "REGULAR" && _regular == 3)
+            {
+                return true;
+            }
+            else if (Enum.GetName(typeof(Flavor), FlavorOfBinToCheck) == "ORANGE" && _orange == 3)
+            {
+                return true;
+            }
+            else if (Enum.GetName(typeof(Flavor), FlavorOfBinToCheck) == "LEMON" && _lemon == 3)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public Boolean IsEmpty(string FlavorOfBinToCheck)
         {
-            Debug.WriteLine("IsEmpty checked");
             if (FlavorOfBinToCheck.ToUpper() == "REGULAR" && _regular == 0)
             {
                 return true;
@@ -122,6 +191,26 @@ namespace _02_Odie
                 return true;
             }
             else if (FlavorOfBinToCheck.ToUpper() == "LEMON" && _lemon == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public Boolean IsEmpty(Flavor FlavorOfBinToCheck)
+        {
+            if (Enum.GetName(typeof(Flavor), FlavorOfBinToCheck) == "REGULAR" && _regular == 0)
+            {
+                return true;
+            }
+            else if (Enum.GetName(typeof(Flavor), FlavorOfBinToCheck) == "ORANGE" && _orange == 0)
+            {
+                return true;
+            }
+            else if (Enum.GetName(typeof(Flavor), FlavorOfBinToCheck) == "LEMON" && _lemon == 0)
             {
                 return true;
             }

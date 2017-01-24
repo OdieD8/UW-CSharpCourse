@@ -1,4 +1,4 @@
-﻿//Exercise 02
+﻿//Exercise 03
 //Odie de Moura
 
 using System;
@@ -7,26 +7,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _02_Odie
+namespace _03_Odie
 {
     class PurchasePrice
     {
-        private int _purchasePrice;
+        private decimal _purchasePrice;
 
         public PurchasePrice()
         {
             _purchasePrice = 0;
         }
 
+        public PurchasePrice(decimal initialPrice)
+        {
+            PriceDecimal = initialPrice;
+        }
+
+        [Obsolete]
         public PurchasePrice(int initialPrice)
         {
-            _purchasePrice = initialPrice;
+            Price = initialPrice;
         }
 
         public int Price
         {
+            get { return (int)_purchasePrice * 100; }
+            set { _purchasePrice = (decimal)value * 0.01m; }
+        }
+
+        public decimal PriceDecimal
+        {
             get { return _purchasePrice; }
-            // this is reduntant, but the assignment says "This property gets and sets the value the purchase price."
             set { _purchasePrice = value; }
         }
     }
