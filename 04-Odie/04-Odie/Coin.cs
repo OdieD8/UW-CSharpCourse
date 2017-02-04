@@ -1,10 +1,13 @@
-﻿using System;
+﻿//Exercise 4
+//Odie de Moura
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _03._3_Odie
+namespace _04_Odie
 {
     class Coin
     {
