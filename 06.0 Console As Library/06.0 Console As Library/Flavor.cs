@@ -5,7 +5,7 @@ using System.Text;
 
 namespace _06._0_Console_As_Library
 {
-    public enum Flavor { REGULAR, ORANGE, LEMON }
+    public enum Flavor { ORANGE, REGULAR, LEMON }
     public static class FlavorOps
     {
         private static List<Flavor> _allFlavors = new List<Flavor>();
