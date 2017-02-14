@@ -22,5 +22,12 @@ namespace _08_Odie
             get { return textBox1.Text; }
             set { textBox1.Text = value; }
         }
+
+        public bool HasTextChanged = false;
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            HasTextChanged = true;
+        }
     }
 }

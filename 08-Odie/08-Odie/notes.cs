@@ -29,6 +29,7 @@ namespace _08_Odie
         {
             NotesForm newForm = new NotesForm();
             TextBox textBox = new TextBox();
+            textBox.TabStop = false;
 
             string userSelectedFilePath = string.Empty;
             OpenFileDialog openFile = new OpenFileDialog();
@@ -41,11 +42,15 @@ namespace _08_Odie
                 newForm.Text = openFile.FileName;
                 newForm.Show();
             }
+            newForm.HasTextChanged = false;
         }
 
         private void save_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.Filter = "Text Files (*.txt)|*.txt";
+            saveFile.DefaultExt = "txt";
+            saveFile.AddExtension = true;
             string currentText = string.Empty;
 
             Form activeForm = ActiveMdiChild;
@@ -58,7 +63,7 @@ namespace _08_Odie
                     if (saveFile.ShowDialog(this) == DialogResult.OK)
                     {
                         string savePath = saveFile.FileName;
-                        using (StreamWriter streamWriter = File.CreateText(savePath + ".txt"))
+                        using (StreamWriter streamWriter = File.CreateText(savePath))
                         {
                             streamWriter.WriteLine(currentText);
                             ActiveMdiChild.Close();
@@ -66,7 +71,6 @@ namespace _08_Odie
                     }
                 }
             }
-            
             else
             {
                 MessageBox.Show("You must have an active notes form to save");
@@ -76,6 +80,21 @@ namespace _08_Odie
 
         private void exit_Click(object sender, EventArgs e)
         {
+            NotesForm activeForm = (NotesForm)ActiveMdiChild;
+            string currentText = string.Empty;
+
+            if (activeForm.HasTextChanged == true)
+            {
+                DialogResult askToSaveFile = MessageBox.Show("Would you like to save your changes?", "Save File", MessageBoxButtons.YesNo);
+                if (askToSaveFile == DialogResult.Yes)
+                {
+                    save_Click(save, null);
+                }
+                else if (askToSaveFile == DialogResult.No)
+                {
+                    this.Close();
+                }
+            }
             this.Close();
         }
     }
