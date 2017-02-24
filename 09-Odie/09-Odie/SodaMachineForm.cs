@@ -149,6 +149,7 @@ namespace _09_Odie
         {
             serviceDisplay();
             coinBoxCounts();
+            snacksList();
         }
 
         private void serviceDisplay()
@@ -201,6 +202,28 @@ namespace _09_Odie
         {
             Notes form = new Notes();
             form.Show();
+        }
+
+        FoodLocker foodlocker = new FoodLocker();
+
+        private void snacksList()
+        {
+            foodlocker.Stock();
+            snackListBox.Items.Clear();
+            foreach (Snack snack in foodlocker.Store)
+            {
+                snackListBox.Items.Add(snack.name);
+            }
+        }
+
+        private void snackListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            snackTextBox.Text = foodlocker.Store[snackListBox.SelectedIndex].ToString();
+        }
+
+        private void stockButton_Click(object sender, EventArgs e)
+        {
+            snacksList();
         }
     }
 }

@@ -32,9 +32,9 @@ namespace _09_Odie
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Orange", 0);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Regular", 1);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Lemon", 2);
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Orange", 0);
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Regular", 1);
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Lemon", 2);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(vendingMachine));
             this.insertMoney = new System.Windows.Forms.Label();
             this.exactChange = new System.Windows.Forms.Label();
@@ -68,9 +68,9 @@ namespace _09_Odie
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.refillButton = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.stockButton = new System.Windows.Forms.Button();
+            this.snackTextBox = new System.Windows.Forms.TextBox();
+            this.snackListBox = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.lemon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.regular)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orange)).BeginInit();
@@ -378,9 +378,9 @@ namespace _09_Odie
             this.columnHeader1,
             this.columnHeader2});
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3});
+            listViewItem4,
+            listViewItem5,
+            listViewItem6});
             this.listView1.LargeImageList = this.imageList1;
             this.listView1.Location = new System.Drawing.Point(6, 19);
             this.listView1.Name = "listView1";
@@ -420,8 +420,8 @@ namespace _09_Odie
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.stockButton);
-            this.tabPage3.Controls.Add(this.textBox1);
-            this.tabPage3.Controls.Add(this.listBox1);
+            this.tabPage3.Controls.Add(this.snackTextBox);
+            this.tabPage3.Controls.Add(this.snackListBox);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -430,31 +430,33 @@ namespace _09_Odie
             this.tabPage3.Text = "Snacks";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(28, 31);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(155, 225);
-            this.listBox1.TabIndex = 0;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(232, 31);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(204, 142);
-            this.textBox1.TabIndex = 1;
-            // 
             // stockButton
             // 
             this.stockButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stockButton.Location = new System.Drawing.Point(261, 197);
+            this.stockButton.Location = new System.Drawing.Point(257, 197);
             this.stockButton.Name = "stockButton";
             this.stockButton.Size = new System.Drawing.Size(153, 46);
             this.stockButton.TabIndex = 2;
             this.stockButton.Text = "Stock Machine w/Snacks";
             this.stockButton.UseVisualStyleBackColor = true;
+            this.stockButton.Click += new System.EventHandler(this.stockButton_Click);
+            // 
+            // snackTextBox
+            // 
+            this.snackTextBox.Location = new System.Drawing.Point(232, 31);
+            this.snackTextBox.Multiline = true;
+            this.snackTextBox.Name = "snackTextBox";
+            this.snackTextBox.Size = new System.Drawing.Size(204, 142);
+            this.snackTextBox.TabIndex = 1;
+            // 
+            // snackListBox
+            // 
+            this.snackListBox.FormattingEnabled = true;
+            this.snackListBox.Location = new System.Drawing.Point(28, 31);
+            this.snackListBox.Name = "snackListBox";
+            this.snackListBox.Size = new System.Drawing.Size(155, 225);
+            this.snackListBox.TabIndex = 0;
+            this.snackListBox.SelectedIndexChanged += new System.EventHandler(this.snackListBox_SelectedIndexChanged);
             // 
             // vendingMachine
             // 
@@ -517,8 +519,8 @@ namespace _09_Odie
         private System.Windows.Forms.Button newFormButton;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button stockButton;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.TextBox snackTextBox;
+        private System.Windows.Forms.ListBox snackListBox;
     }
 }
 
